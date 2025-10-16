@@ -1,3 +1,4 @@
+
 # Chess DQN AI
 
 This project implements a **Deep Q-Network (DQN)** agent to play chess using reinforcement learning. The AI learns by playing against itself, gradually improving through experience replay and neural network updates.
@@ -15,12 +16,31 @@ This project implements a **Deep Q-Network (DQN)** agent to play chess using rei
 Install dependencies with:
 
 ```bash
-pip install python-chess torch numpy
+pip install python-chess torch numpy flask
 ```
 
 ## Usage
 
-Run the training script:
+### Web App
+
+Start the Flask web app:
+
+```bash
+python app.py
+```
+
+- Visit `http://localhost:5000/` for a simple homepage.
+- POST to `/train` with JSON like `{"episodes": 10}` to trigger training.
+
+Example using `curl`:
+
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"episodes": 10}' http://localhost:5000/train
+```
+
+### Script
+
+Run the training script directly:
 
 ```bash
 python dqn_chess_app.py
@@ -37,7 +57,7 @@ You will see output per episode showing the total reward and the final board pos
 
 ## Customization
 
-- Change `episodes` in the script to train longer.
+- Change `episodes` in the script or API to train longer.
 - Adjust neural network architecture for more complex learning.
 - Integrate with a GUI or play against other chess engines for advanced evaluation.
 
